@@ -35,23 +35,65 @@
 ### 4.1. Diagrama de Componentes (Clean Architecture + Vertical Slice)
 ```mermaid
 graph TD
-    subgraph Drivers ["API / Frameworks (Drivers)"]
+    subgraph Drivers[Drivers e Frameworks]
         Server[Express Server] --> AuthCtrl[Auth Controller]
         Server --> TxCtrl[Transactions Controller]
     end
 
-    subgraph Adapters ["Vertical Slices / Interface Adapters"]
+    subgraph Adapters[Interface Adapters]
         AuthCtrl --> AuthUC[Authenticate User Use Case]
         TxCtrl --> CreateTxUC[Create Transaction Use Case]
     end
 
-    subgraph Core ["Use Cases (Application Core)"]
-        AuthUC --> UserEntity[User Domain Entity]
-        CreateTxUC --> TxEntity[Transaction Domain Entity]
+    subgraph Core[Application Core]
+        AuthUC --> UserEntity[User Entity]
+        CreateTxUC --> TxEntity[Transaction Entity]
     end
 
-    subgraph Infra ["Infrastructure & Gateways"]
+    subgraph Infra[Infrastructure]
         AuthUC --> UserRepo[Prisma UserRepository]
         CreateTxUC --> TxRepo[Prisma TransactionRepository]
     end
+```
+
+### 4.2. Diagrama de Classes (SOLID & Domínio)
+```mermaid
+classDiagram
+    class User {
+        +string id
+        +string email
+        +string passwordHash
+        +validatePassword(password)
+    }
+
+    class Transaction {
+        +string id
+        +string userId
+        +number amount
+        +string type
+        +string category
+        +Date createdAt
+    }
+
+    class ITransactionRepository {
+        <<interface>>
+        +save(transaction)
+        +findByUserId(userId)
+    }
+
+    class CreateTransactionUseCase {
+        -ITransactionRepository transactionRepository
+        +execute(input)
+    }
+
+    class PrismaTransactionRepository {
+        -PrismaClient prisma
+        +save(transaction)
+        +findByUserId(userId)
+    }
+
+    ITransactionRepository <|.. PrismaTransactionRepository : implements
+    CreateTransactionUseCase --> ITransactionRepository : uses
+    CreateTransactionUseCase --> Transaction : creates
+    PrismaTransactionRepository --> Transaction : persists
 ```
