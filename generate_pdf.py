@@ -140,4 +140,3 @@ def generate_pdf(filename="tde2_relatorio.pdf"):
 
 if __name__ == '__main__':
     generate_pdf("tde2_relatorio.pdf")
-    generate_pdf("argos-backend/tde2_relatorio.pdf")
