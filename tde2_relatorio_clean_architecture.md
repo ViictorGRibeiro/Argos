@@ -5,8 +5,8 @@
 | Aluno | Matrícula / RA | Papel na Tarefa | Descrição das Atividades Realizadas |
 | :--- | :--- | :--- | :--- |
 | **Victor Gustavo** | 20260101 | Tech Lead / Arquiteto de Software | Concepção da arquitetura, estruturação do Clean Architecture + Vertical Slice, definição de contratos de interfaces e injeção de dependência (SOLID). |
-| **Equipe / Colaborador 2** | 20260102 | Desenvolvedor Backend | Implementação dos Casos de Uso (Use Cases), Handlers das Features (Autenticação e Transações) e repositórios de persistência. |
-| **Equipe / Colaborador 3** | 20260103 | Engenheiro de Qualidade / DevOps | Configuração do ambiente Git, criação da nova branch no GitHub, validação dos princípios SOLID e elaboração dos diagramas. |
+| **Arthur Sornas** | 20260102 | Desenvolvedor Backend | Implementação dos Casos de Uso (Use Cases), Handlers das Features (Autenticação e Transações) e repositórios de persistência. |
+| **Guilherme Marafon** | 20260103 | Engenheiro de Qualidade / DevOps | Configuração do ambiente Git, criação da nova branch no GitHub, validação dos princípios SOLID e elaboração dos diagramas. |
 
 ---
 
