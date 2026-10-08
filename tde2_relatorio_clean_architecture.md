@@ -12,7 +12,7 @@
 
 ## 2. Repositório GitHub e Branch
 
-* **Repositório Oficial:** [https://github.com/ViictorGRibeiro/argos-backend](https://github.com/ViictorGRibeiro/argos-backend)
+* **Repositório Oficial:** [https://github.com/ViictorGRibeiro/Argos](https://github.com/ViictorGRibeiro/Argos)
 * **Branch Utilizada:** `feature/clean-architecture-vertical-slice`
 
 ---
