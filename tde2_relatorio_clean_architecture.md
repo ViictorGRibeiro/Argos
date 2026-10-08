@@ -34,21 +34,24 @@
 
 ### 4.1. Diagrama de Componentes (Clean Architecture + Vertical Slice)
 ```mermaid
-componentDiagram
-    package "API / Frameworks (Drivers)" {
-        [Express Server] --> [Auth Controller]
-        [Express Server] --> [Transactions Controller]
-    }
-    package "Vertical Slices / Interface Adapters" {
-        [Auth Controller] --> [Authenticate User Use Case]
-        [Transactions Controller] --> [Create Transaction Use Case]
-    }
-    package "Use Cases (Application Core)" {
-        [Authenticate User Use Case] --> [User Domain Entity]
-        [Create Transaction Use Case] --> [Transaction Domain Entity]
-    }
-    package "Infrastructure & Gateways" {
-        [Authenticate User Use Case] --> [Prisma UserRepository]
-        [Create Transaction Use Case] --> [Prisma TransactionRepository]
-    }
+graph TD
+    subgraph Drivers ["API / Frameworks (Drivers)"]
+        Server[Express Server] --> AuthCtrl[Auth Controller]
+        Server --> TxCtrl[Transactions Controller]
+    end
+
+    subgraph Adapters ["Vertical Slices / Interface Adapters"]
+        AuthCtrl --> AuthUC[Authenticate User Use Case]
+        TxCtrl --> CreateTxUC[Create Transaction Use Case]
+    end
+
+    subgraph Core ["Use Cases (Application Core)"]
+        AuthUC --> UserEntity[User Domain Entity]
+        CreateTxUC --> TxEntity[Transaction Domain Entity]
+    end
+
+    subgraph Infra ["Infrastructure & Gateways"]
+        AuthUC --> UserRepo[Prisma UserRepository]
+        CreateTxUC --> TxRepo[Prisma TransactionRepository]
+    end
 ```
